@@ -1,14 +1,10 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const launchPastSchema = new Schema({
+const coresSchema = new Schema({
    
-          mission_name: String,
-          launch_date_local: String,
-          // launch_site 
-          // links 
-          // rocket 
-          // ships 
+          flight: Number
+
 });
 
-module.exports = mongoose.model('launchesPast', launchPastSchema)
+module.exports = mongoose.model('cores', coresSchema)
