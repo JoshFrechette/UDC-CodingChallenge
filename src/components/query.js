@@ -1,5 +1,6 @@
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import { spaceCard } from './spacecard';
 
 const ROCKET_QUERY = gql`
 {
@@ -23,25 +24,36 @@ const ROCKET_QUERY = gql`
   }
 `;
 
-
-
-const rocket = ({ onRocketSelected }) => (
-    <Query query={ROCKET_QUERY}>
-      {({ loading, error, data }) => {
-        if (loading) return 'Loading...';
-        if (error) return `Error! ${error.message}`;
-  
+const CardGen = ({ data }) => {
+    console.log(data)
+    return data.map((dataSet, index) => {
         return (
-          <select name="rocket" onChange={onRocketSelected}>
-            {data.dogs.map(dog => (
-              <option key={dog.id} value={dog.breed}>
-                {dog.breed}
-              </option>
-            ))}
-          </select>
+            <>
+                <spaceCard key={index.toString()} data={dataSet} index={index} />
+                {index > 1 ? null : (
+                    <Divider key={index.toString() + "div"} variant="middle" />
+                )}
+            </>
         );
-      }}
-    </Query>
-  );
+    });
+};
 
-  export default query;
+class rocketQuery extends Component {
+    render() {
+        return (
+
+            <Query query={ROCKET_QUERY}>
+                {({ loading, error, data }) => {
+                    if (loading) return 'Loading...';
+                    if (error) return `Error! ${error.message}`;
+
+                    return (
+                        <CardGen data={info} />
+                    );
+                }}
+            </Query>
+        )
+    }
+};
+
+export default rocketQuery;
