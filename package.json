@@ -1,0 +1,32 @@
+{
+  "name": "udc_spacex_codechallenge",
+  "version": "1.0.0",
+  "description": "code challenge for the underground dance center",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoshFrechette/UDC-CodingChallenge.git"
+  },
+  "keywords": [
+    "material-ui",
+    "react",
+    "graphql",
+    "spacex",
+    "api"
+  ],
+  "author": "josh frechette",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoshFrechette/UDC-CodingChallenge/issues"
+  },
+  "homepage": "https://github.com/JoshFrechette/UDC-CodingChallenge#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-graphql": "^0.9.0",
+    "mongoose": "^5.9.21",
+    "nodemon": "^2.0.4"
+  }
+}
