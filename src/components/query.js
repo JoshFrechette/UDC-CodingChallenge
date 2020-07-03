@@ -1,6 +1,10 @@
+import React, { Component } from "react";
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
-import { spaceCard } from './spacecard';
+import Grid from '@material-ui/core/Grid';
+import Divider from "@material-ui/core/Divider";
+
+import spaceCard from './spacecard';
 
 const ROCKET_QUERY = gql`
 {
@@ -21,24 +25,40 @@ const ROCKET_QUERY = gql`
       }
     }
   }
-  }
 `;
 
 const CardGen = ({ data }) => {
-    console.log(data)
-    return data.map((dataSet, index) => {
-        return (
-            <>
-                <spaceCard key={index.toString()} data={dataSet} index={index} />
-                {index > 1 ? null : (
-                    <Divider key={index.toString() + "div"} variant="middle" />
-                )}
-            </>
-        );
-    });
-};
 
-class rocketQuery extends Component {
+
+    console.log(data)
+
+    const rocketinfo = data.launches;
+    
+    const getSpaceCardMaker = (spaceCardObj) => {
+    return (
+            <Grid item xs={12} sm={4}>
+                <spaceCard {...spaceCardObj} />
+            </Grid>
+        )
+    }
+
+    return (
+        <Grid container spacing={2}>
+            {rocketinfo.map(spaceCardObj => getSpaceCardMaker(spaceCardObj))}
+        </Grid>
+    )
+    //     data.map((dataSet, index) => {
+    //         <>
+    //             <spaceCard key={index.toString()} data={dataSet} index={index} />
+    //             {index > 1 ? null : (
+    //                 <Divider key={index.toString() + "div"} variant="middle" />
+    //             )}
+    //         </>
+    // })
+
+    };
+
+class RocketQuery extends Component {
     render() {
         return (
 
@@ -48,7 +68,7 @@ class rocketQuery extends Component {
                     if (error) return `Error! ${error.message}`;
 
                     return (
-                        <CardGen data={info} />
+                        <CardGen data={data} />
                     );
                 }}
             </Query>
@@ -56,4 +76,4 @@ class rocketQuery extends Component {
     }
 };
 
-export default rocketQuery;
+export default RocketQuery;

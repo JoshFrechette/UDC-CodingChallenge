@@ -20,6 +20,7 @@ import CreditCardIcon from '@material-ui/icons/CreditCard';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
+import RocketQuery from './query';
 
 
 import Content from '../components/content';
@@ -110,7 +111,8 @@ export default function PermanentDrawerLeft() {
           <Grid item xs={12} sm={8}>
             <Typography paragraph>Active Rockets</Typography>
             <Grid item>
-              {/* <Content /> */}
+              <RocketQuery />
+
             card
                     </Grid>
 

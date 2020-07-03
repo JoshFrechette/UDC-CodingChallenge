@@ -25,30 +25,38 @@ import ShareIcon from '@material-ui/icons/Share';
 //     },
 // });
 
-const spaceCard = props => {
+const spaceCard = ({ data, index }) => {
+    // const [modalState, setModalState] = useState(false);
+    const { links, rocket, launch_site } = data;
+    const imageLink = links.flickr_images[0];
+    const site = launch_site.site_name_long;
+    const { cost_per_launch, description, name } = rocket.rocket;
 
     // const classes = useStyles();
     // const bull = <span className={classes.bullet}>•</span>;
-    const { avatarUrl, title, subtitle, description, imageUrl } = props;
+    // const { avatarUrl, title, subtitle, description, imageUrl } = props;
 
     return (
         <Card>
             <CardHeader
                 avatar={
-                    <Avatar src={avatarUrl} />      
+                    <Avatar src={imageLink} />      
                 }
                 action={
                     <IconButton aria-label="settings">
                         <ShareIcon />
                     </IconButton>
                 }
-                title={title}
-                subheader={subtitle}
+                title={name}
+                // subheader={subtitle}
             />
-            <CardMedia style={{ height: "150px" }} image={ imageUrl } />
+            {/* <CardMedia style={{ height: "150px" }} image={ imageUrl } /> */}
             <CardContent>
                 <Typography variant="body2" component="p">
                    { description }
+                </Typography>
+                <Typography variant="body2" component="p">
+                   { cost_per_launch}
                 </Typography>
             </CardContent>
             <CardActions>
