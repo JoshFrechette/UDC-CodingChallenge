@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import Grid from '@material-ui/core/Grid';
 import Divider from "@material-ui/core/Divider";
 
-import spaceCard from './spacecard';
+import SpaceCard from './spacecard';
 
 const ROCKET_QUERY = gql`
 {
@@ -33,11 +33,11 @@ const CardGen = ({ data }) => {
     console.log(data)
 
     const rocketinfo = data.launches;
-    
+
     const getSpaceCardMaker = (spaceCardObj) => {
     return (
             <Grid item xs={12} sm={4}>
-                <spaceCard {...spaceCardObj} />
+                <SpaceCard {...spaceCardObj} />
             </Grid>
         )
     }

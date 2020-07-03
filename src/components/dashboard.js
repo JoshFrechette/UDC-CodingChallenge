@@ -111,11 +111,11 @@ export default function PermanentDrawerLeft() {
           <Grid item xs={12} sm={8}>
             <Typography paragraph>Active Rockets</Typography>
             <Grid item>
-              <RocketQuery />
+
 
             card
                     </Grid>
-
+                    <RocketQuery />
           </Grid>
 
 

@@ -32,9 +32,9 @@ const spaceCard = ({ data, index }) => {
     const site = launch_site.site_name_long;
     const { cost_per_launch, description, name } = rocket.rocket;
 
-    // const classes = useStyles();
-    // const bull = <span className={classes.bullet}>•</span>;
-    // const { avatarUrl, title, subtitle, description, imageUrl } = props;
+    const ModalContainer = () => {
+
+    }
 
     return (
         <Card>
@@ -53,6 +53,7 @@ const spaceCard = ({ data, index }) => {
             {/* <CardMedia style={{ height: "150px" }} image={ imageUrl } /> */}
             <CardContent>
                 <Typography variant="body2" component="p">
+                    { site }
                    { description }
                 </Typography>
                 <Typography variant="body2" component="p">
