@@ -75,11 +75,13 @@ export default function PermanentDrawerLeft() {
         }}
         anchor="left"
       >
+        
         <div className={classes.toolbar}>
-          <ListItem >
+          {/* <ListItem > */}
             {/* <ListItemIcon><RocketIcon/></ListItemIcon> */}
-            <ListItemText>Welcome, Ryan</ListItemText>
-          </ListItem>
+            {/* <ListItemText>Welcome, Ryan</ListItemText> */}
+            <Typography>Welcome, Ryan</Typography>
+          {/* </ListItem> */}
         </div>
         <Divider />
         <List>
