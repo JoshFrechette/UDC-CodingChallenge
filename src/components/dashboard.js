@@ -51,6 +51,11 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
+  const [value, setValue] = React.useState('1');
+
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
 
   return (
     <div className={classes.root}>
@@ -62,9 +67,9 @@ export default function PermanentDrawerLeft() {
           </Typography>
           <Divider />
         </Toolbar>
-        <Tabs aria-label="simple tabs example">
-          <Tab label="Rockets" />
-          <Tab label="Satellites" />
+        <Tabs value={value} aria-label="simple tabs example">
+          <Tab label="Rockets" value="rockets"/>
+          <Tab label="Satellites" value="satellites"/>
         </Tabs>
       </AppBar>
       <Drawer
