@@ -10,10 +10,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+
 import theme from './theme.js';
-import RocketIcon from '../assets/rocket.png';
+
 import HomeIcon from '@material-ui/icons/Home';
 import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import CreditCardIcon from '@material-ui/icons/CreditCard';
@@ -62,12 +61,10 @@ export default function PermanentDrawerLeft() {
       <CssBaseline />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
-          <Typography variant="h6" noWrap>
-            Dashboard
-          </Typography>
+          <Typography variant="h6" noWrap>Dashboard</Typography>
           <Divider />
         </Toolbar>
-        <Tabs value={value} aria-label="simple tabs example">
+        <Tabs onChange={handleChange} value={value} aria-label="simple tabs example">
           <Tab label="Rockets" value="rockets"/>
           <Tab label="Satellites" value="satellites"/>
         </Tabs>
