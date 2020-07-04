@@ -21,8 +21,6 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Grid from '@material-ui/core/Grid';
 import RocketQuery from './query';
-
-
 import Content from '../components/content';
 
 const drawerWidth = 240;
@@ -107,19 +105,18 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Grid container direction="column">
 
-          <Grid item xs={0} sm={2} />
+          <Grid item sm={2} />
+
           <Grid item xs={12} sm={8}>
             <Typography paragraph>Active Rockets</Typography>
+
             <Grid item>
-
-
-            card
-                    </Grid>
-                    <RocketQuery />
+              <RocketQuery />
+            </Grid>
           </Grid>
 
-
           <Typography paragraph>Copyright 2020 Devias IO</Typography>
+          <Grid item sm={2} />
         </Grid>
 
       </main>

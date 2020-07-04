@@ -25,8 +25,9 @@ import ShareIcon from '@material-ui/icons/Share';
 //     },
 // });
 
-const spaceCard = ({ data, index }) => {
+const SpaceCard = ( data, index ) => {
     // const [modalState, setModalState] = useState(false);
+    console.log(data, index)
     const { links, rocket, launch_site } = data;
     const imageLink = links.flickr_images[0];
     const site = launch_site.site_name_long;
@@ -53,7 +54,7 @@ const spaceCard = ({ data, index }) => {
             {/* <CardMedia style={{ height: "150px" }} image={ imageUrl } /> */}
             <CardContent>
                 <Typography variant="body2" component="p">
-                    { site }
+                { site }
                    { description }
                 </Typography>
                 <Typography variant="body2" component="p">
@@ -69,4 +70,4 @@ const spaceCard = ({ data, index }) => {
     )
 }
 
-export default spaceCard;
+export default SpaceCard;

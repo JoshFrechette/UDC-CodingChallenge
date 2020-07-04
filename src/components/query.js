@@ -30,9 +30,10 @@ const ROCKET_QUERY = gql`
 const CardGen = ({ data }) => {
 
 
-    console.log(data)
+
 
     const rocketinfo = data.launches;
+    console.log(rocketinfo)
 
     const getSpaceCardMaker = (spaceCardObj) => {
     return (
@@ -47,15 +48,18 @@ const CardGen = ({ data }) => {
             {rocketinfo.map(spaceCardObj => getSpaceCardMaker(spaceCardObj))}
         </Grid>
     )
-    //     data.map((dataSet, index) => {
-    //         <>
-    //             <spaceCard key={index.toString()} data={dataSet} index={index} />
-    //             {index > 1 ? null : (
-    //                 <Divider key={index.toString() + "div"} variant="middle" />
-    //             )}
-    //         </>
-    // })
-
+//     return (
+//         data.map((dataSet, index) => {
+//             return (
+//             <>
+//                 <SpaceCard key={index.toString()} data={dataSet} index={index} />
+//                 {index > 1 ? null : (
+//                     <Divider key={index.toString() + "div"} variant="middle" />
+//                 )}
+//             </>
+//             )
+//     })
+// )
     };
 
 class RocketQuery extends Component {
@@ -66,9 +70,11 @@ class RocketQuery extends Component {
                 {({ loading, error, data }) => {
                     if (loading) return 'Loading...';
                     if (error) return `Error! ${error.message}`;
-
+                    console.log(data)
                     return (
+                        <>
                         <CardGen data={data} />
+                        </>
                     );
                 }}
             </Query>
