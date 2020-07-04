@@ -3,4 +3,6 @@ Coding Challenge for the Underground Dance Centre
 
 # Deployment
 
-available soon
+[Heroku - UDC Coding Challenge](https://udc-codingchallenge.herokuapp.com/)
+
+
