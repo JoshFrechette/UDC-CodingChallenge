@@ -6,46 +6,41 @@ import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Avatar, CardHeader, IconButton, CardMedia } from '@material-ui/core';
-import ShareIcon from '@material-ui/icons/Share';
 
-// const useStyles = makeStyles({
-//     root: {
-//         minWidth: 275,
-//     },
-//     bullet: {
-//         display: 'inline-block',
-//         margin: '0 2px',
-//         transform: 'scale(0.8)',
-//     },
-//     title: {
-//         fontSize: 14,
-//     },
-//     pos: {
-//         marginBottom: 12,
-//     },
-// });
 
-const spaceCard = ({ data, index }) => {
+const useStyles = makeStyles({
+    root: {
+        minWidth: 275,
+    },
+    bullet: {
+        display: 'inline-block',
+        margin: '0 2px',
+        transform: 'scale(0.8)',
+    },
+    title: {
+        fontSize: 14,
+    },
+    pos: {
+        marginBottom: 12,
+    },
+});
+
+const spaceCard = ( data, index ) => {
     // const [modalState, setModalState] = useState(false);
     const { links, rocket, launch_site } = data;
     const imageLink = links.flickr_images[0];
-    const site = launch_site.site_name_long;
+    const site = launch_site.site_name_long[0];
     const { cost_per_launch, description, name } = rocket.rocket;
-
+    console.log(data)
     const ModalContainer = () => {
 
     }
 
     return (
-        <Card>
+        <Card key={name}>
             <CardHeader
                 avatar={
                     <Avatar src={imageLink} />      
-                }
-                action={
-                    <IconButton aria-label="settings">
-                        <ShareIcon />
-                    </IconButton>
                 }
                 title={name}
                 // subheader={subtitle}
@@ -61,8 +56,7 @@ const spaceCard = ({ data, index }) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Buy Now!</Button>
-                <Button size="small">Offer!</Button>
+                <Button variant="contained" color="primary" >More Info</Button>
             </CardActions>
         </Card>
 
