@@ -61,7 +61,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper : {
     margin: theme.spacing(3),
-    // width: theme.spacing(16),
+    padding: 10,
+    width: theme.spacing(10),
     // height: theme.spacing(16),
   }
 }));
@@ -181,14 +182,16 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Typography variant="h4">Active Rockets</Typography>
 
-        <Grid container direction="column">
+        <Grid container>
           <Grid item> 
           <Typography variant="h4">Active Rockets</Typography>
           </Grid>
           <Paper>
 
           <Grid container direction="column">
+
             <RocketQuery />
+
           </Grid>
 
           </Paper>

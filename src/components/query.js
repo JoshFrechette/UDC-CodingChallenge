@@ -37,7 +37,7 @@ const CardGen = ({ data }) => {
 
     const getSpaceCardMaker = (spaceCardObj) => {
     return (
-            <Grid item xs={12} sm={4}>
+            <Grid item xs={8}>
                 <ShipItem{ ...spaceCardObj} />
             </Grid>
         )

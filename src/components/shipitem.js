@@ -36,12 +36,16 @@ const shipItem = ( data, index ) => {
     return (
 
         <Grid container direction="row">
+                  <Grid container direction="column">
+            <Grid item>
             <Avatar src={imageLink} /> 
             <Typography variant="h5">{name}</Typography>
             <Divider orientation="vertical"/>
             <Typography variant="p">{ cost_per_launch}</Typography>
             <Typography variant="p">{description}</Typography>
             <Button variant="contained" color="primary" >More Info</Button>
+            </Grid>
+            </Grid>
         </Grid>
 
     )
