@@ -30,27 +30,25 @@ const ROCKET_QUERY = gql`
 `;
 
 const CardGen = ({ data, index}) => {
-
-
-
-
+  
 
     const rocketinfo = data.launches;
 
     const getSpaceCardMaker = (spaceCardObj) => {
       console.log(rocketinfo.length)
-      console.log(spaceCardObj)
+      console.log(index)
       // if (!data.length) {
       return (
         <>
           <ListItem>
             <Grid item xs={12}>
-              <ShipItem{...spaceCardObj} />
+              <ShipItem key={index} {...spaceCardObj} />
             </Grid>
           </ListItem>
           <Divider variant="middle" />
         </>
       )
+      // Code to prevent a divider on the last result
       // } else {
       //   return (
       //   <>

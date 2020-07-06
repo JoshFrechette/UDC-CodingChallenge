@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -34,6 +34,23 @@ import { BottomNavigation } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
+
+// function rand() {
+//   return Math.round(Math.random() * 20) - 10;
+// }
+
+// function getModalStyle() {
+//   const top = 50 + rand();
+//   const left = 50 + rand();
+
+//   return {
+//     top: `${top}%`,
+//     left: `${left}%`,
+//     transform: `translate(-${top}%, -${left}%)`,
+//   };
+// }
+
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -103,12 +120,12 @@ function a11yProps(index) {
 
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
-  const [value, setValue] = React.useState('1');
-
+  const [value, setValue] = useState('1');
+  // const [modalStyle] = useState(getModalStyle);
+  const [open, setOpen] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
 
   return (
 
