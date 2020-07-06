@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import Grid from '@material-ui/core/Grid';
 import Divider from "@material-ui/core/Divider";
+import ListItem from '@material-ui/core/ListItem';
 
 // import SpaceCard from './spacecard';
 import ShipItem from './shipitem';
@@ -28,25 +29,48 @@ const ROCKET_QUERY = gql`
   }
 `;
 
-const CardGen = ({ data }) => {
+const CardGen = ({ data, index}) => {
 
 
-    console.log(data)
+
+
 
     const rocketinfo = data.launches;
 
     const getSpaceCardMaker = (spaceCardObj) => {
-    return (
-            <Grid item xs={8}>
-                <ShipItem{ ...spaceCardObj} />
+      console.log(rocketinfo.length)
+      console.log(spaceCardObj)
+      // if (!data.length) {
+      return (
+        <>
+          <ListItem>
+            <Grid item xs={12}>
+              <ShipItem{...spaceCardObj} />
             </Grid>
-        )
+          </ListItem>
+          <Divider variant="middle" />
+        </>
+      )
+      // } else {
+      //   return (
+      //   <>
+      //   <ListItem>
+      //     <Grid item xs={12}>
+      //       <ShipItem{...spaceCardObj} />
+      //     </Grid>
+      //   </ListItem>
+
+      // </>
+      //   )
+      // }
     }
 
     return (
-        <Grid container spacing={2}>
+
+        <Grid container direction="column">
             {rocketinfo.map(spaceCardObj => getSpaceCardMaker(spaceCardObj))}
         </Grid>
+
     )
 
     };

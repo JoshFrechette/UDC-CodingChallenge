@@ -59,10 +59,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(3),
   },
-  paper : {
+  paper: {
     margin: theme.spacing(3),
-    padding: 10,
-    width: theme.spacing(10),
+    // padding: 10,
+    // width: theme.spacing(10),
     // height: theme.spacing(16),
   }
 }));
@@ -125,18 +125,18 @@ export default function PermanentDrawerLeft() {
           </ListItem>
           <IconButton aria-label="search" color="inherit">
             <SearchIcon children={
-        <input />
-      }/>
+              <input />
+            } />
           </IconButton>
         </Toolbar>
         <Divider variant="middle" />
         <ListItem>
           <Tabs onChange={handleChange} value={value} aria-label="simple tabs example">
-            <Tab 
-            label="Rockets" 
-            value="rockets"             
-            wrapped
-            {...a11yProps('one')}/>
+            <Tab
+              label="Rockets"
+              value="rockets"
+              wrapped
+              {...a11yProps('one')} />
             <Tab label="Satellites" value="satellites" />
           </Tabs>
         </ListItem>
@@ -182,38 +182,35 @@ export default function PermanentDrawerLeft() {
         <div className={classes.toolbar} />
         <Typography variant="h4">Active Rockets</Typography>
 
-        <Grid container>
-          <Grid item> 
-          <Typography variant="h4">Active Rockets</Typography>
+        <Grid container direction="column">
+          <Grid item xs={12}>
+            <Typography variant="h4">Active Rockets</Typography>
           </Grid>
-          <Paper>
+          <Grid item xs={8}>
+            <Paper>
 
-          <Grid container direction="column">
+              {/* <Grid container direction="column" alignConten="space-between"> */}
+              <List>
+                <RocketQuery />
+              </List>
+              {/* </Grid> */}
 
-            <RocketQuery />
-
+            </Paper>
           </Grid>
-
-          </Paper>
         </Grid>
 
         <Grid container direction="row">
-        {/* <BottomNavigation> */}
-        <Grid item  xs={6}>
-          <Typography>Copyright 2020 Devias IO</Typography>
+          {/* <BottomNavigation> */}
+          <Grid item xs={6}>
+            <Typography>Copyright 2020 Devias IO</Typography>
           </Grid>
           <Grid item xs={6}>
-          <Typography>Support | Contact</Typography>
+            <Typography>Support | Contact</Typography>
           </Grid>
-        {/* </BottomNavigation> */}
+          {/* </BottomNavigation> */}
         </Grid>
       </main>
       {/* </TabPanel> */}
-  
-
-
-
-
     </div>
   );
 }
