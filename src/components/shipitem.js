@@ -13,16 +13,16 @@ function rand() {
     return Math.round(Math.random() * 20) - 10;
 }
 
-//   function getModalStyle() {
-//     const top = 50 + rand();
-//     const left = 50 + rand();
+  function getModalStyle() {
+    const top = 50 + rand();
+    const left = 50 + rand();
 
-//     return {
-//       top: `${top}%`,
-//       left: `${left}%`,
-//       transform: `translate(-${top}%, -${left}%)`,
-//     };
-//   }
+    return {
+      top: `${top}%`,
+      left: `${left}%`,
+      transform: `translate(-${top}%, -${left}%)`,
+    };
+  }
 
 const useStyles = makeStyles({
     root: {
@@ -109,10 +109,10 @@ export default function ShipItem(data, index, props) {
 
     return (
 
-        <Grid container direction="row" alignContent="space-around">
+        <Grid container direction="row" display="flex" alignContent="space-around" alignItems="center" justify="center">
             {/* <Grid container direction="column"> */}
             <Grid item xs={3}>
-                {/* <Box justifyContent="center"> */}
+                {/* <Box display="flex" alignItems="center"> */}
                 <Avatar src={imageLink} />
                 {/* </Box> */}
             </Grid>
@@ -123,7 +123,7 @@ export default function ShipItem(data, index, props) {
                         <Typography >{abbreviateNumber(cost_per_launch)}</Typography>
                     </Grid>
                     <Grid container direction="row">
-                        <Typography variant="p">{description}</Typography>
+                        <Typography variant="p" noWrap minWidth="20">{description}</Typography>
                     </Grid>
                 </Grid>
             </Grid>
