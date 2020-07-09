@@ -5,28 +5,31 @@ import Grid from '@material-ui/core/Grid';
 import Divider from "@material-ui/core/Divider";
 import ListItem from '@material-ui/core/ListItem';
 
-// import SpaceCard from './spacecard';
 import ShipItem from './shipitem';
 
 const ROCKET_QUERY = gql`
 {
-    launches(limit: 3) {
+  launches(limit: 3) {
+    id
+    links {
+      flickr_images
+    }
+    rocket {
       rocket {
-        rocket {
-          cost_per_launch
-          name
-          description
+        cost_per_launch
+        country
+        description
+        diameter {
+          meters
         }
-      }
-      links {
-        flickr_images
-      }
-      mission_name
-      launch_site {
-        site_name_long
+        height {
+          meters
+        }
+        name
       }
     }
   }
+}
 `;
 
 const CardGen = ({ data, index}) => {

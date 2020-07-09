@@ -16,21 +16,6 @@ import MuiDialogActions from '@material-ui/core/DialogActions';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 
-// function rand() {
-//     return Math.round(Math.random() * 20) - 10;
-// }
-
-// function getModalStyle() {
-//     const top = 50 + rand();
-//     const left = 50 + rand();
-
-//     return {
-//         top: `${top}%`,
-//         left: `${left}%`,
-//         transform: `translate(-${top}%, -${left}%)`,
-//     };
-// }
-
 const useStyles = makeStyles((theme) => ({
     root: {
         minWidth: 275,
@@ -51,14 +36,6 @@ const useStyles = makeStyles((theme) => ({
         top: theme.spacing(1),
         color: theme.palette.grey[500],
     },
-    // paper: {
-    //     position: 'absolute',
-    //     width: 400,
-    //     backgroundColor: theme.palette.background.paper,
-    //     border: '2px solid #000',
-    //     boxShadow: theme.shadows[5],
-    //     padding: theme.spacing(2, 4, 3),
-    //   },
 }));
 
 const DialogTitle = withStyles(useStyles)((props) => {
@@ -115,38 +92,6 @@ export default function ShipItem(data, index, props) {
         return newCost;
     }
 
-    // function rand() {
-    //     return Math.round(Math.random() * 20) - 10;
-    // }
-
-    // function getModalStyle() {
-    //     const top = 50 + rand();
-    //     const left = 50 + rand();
-
-    //     return {
-    //         top: `${top}%`,
-    //         left: `${left}%`,
-    //         transform: `translate(-${top}%, -${left}%)`,
-    //     };
-    // }
-
-    // const handleOpen = () => {
-    //     setOpen(true);
-    // };
-
-    // const handleClose = () => {
-    //     setOpen(false);
-    // };
-
-    // const ModalContainer = (
-    //     <div>
-    //         <h2 id="simple-modal-title">Text in a modal</h2>
-    //         <p id="simple-modal-description">
-    //             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-    //     </p>
-    //     </div>
-    // );
-
     const handleClickOpen = () => {
         setOpen(true);
       };
@@ -162,27 +107,37 @@ export default function ShipItem(data, index, props) {
             alignContent="space-around" 
             alignItems="center" 
             justify="center">
-            {/* <Grid container direction="column"> */}
-            <Grid item xs={3}>
-                {/* <Box display="flex" alignItems="center"> */}
+            <Grid item xs={3}>           
                 <Avatar src={imageLink} />
-                {/* </Box> */}
             </Grid>
             <Grid item xs={6}>
                 <Grid container direction="column">
                     <Grid container direction="row">
                         <Typography variant="h5">{name} | </Typography>
-                        <Typography >{abbreviateNumber(cost_per_launch)}</Typography>
+                        <Typography>{abbreviateNumber(cost_per_launch)}</Typography>
                     </Grid>
                     <Grid container direction="row">
-                        <Typography variant="p" noWrap minWidth="20">{description}</Typography>
+                        <Typography 
+                            variant="p" 
+                            noWrap minWidth="20"
+                        >
+                        {description}
+                        </Typography>
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item xs={3}>
-                <Button variant="contained" color="primary" onClick={handleClickOpen}>More Info</Button>
-                <Dialog onClose={handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                    <DialogTitle id="customized-dialog-title" onClose={handleClose}>
+                <Button 
+                    variant="contained" 
+                    color="primary" 
+                    onClick={handleClickOpen}>More Info</Button>
+                <Dialog 
+                    onClose={handleClose} 
+                    aria-labelledby="customized-dialog-title" 
+                    open={open}>
+                    <DialogTitle 
+                        id="customized-dialog-title" 
+                        onClose={handleClose}>
                         Modal title
                     </DialogTitle>
                         <DialogContent dividers>
@@ -201,13 +156,15 @@ export default function ShipItem(data, index, props) {
                             </Typography>
                         </DialogContent>
                     <DialogActions>
-                        <Button autoFocus onClick={handleClose} color="primary">
+                        <Button 
+                            autoFocus 
+                            onClick={handleClose} 
+                            color="primary">
                             Save changes
                         </Button>
                     </DialogActions>
                 </Dialog>
             </Grid>
-            {/* </Grid> */}
         </Grid>
 
     )
