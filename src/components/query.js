@@ -26,20 +26,22 @@ const ROCKET_QUERY = gql`
           meters
         }
         name
+        active
       }
     }
   }
 }
+
 `;
 
-const CardGen = ({ data, index}) => {
-  
+const CardGen = ({ data, index, props }) => {
 
+    console.log(data)
     const rocketinfo = data.launches;
+    console.log(rocketinfo)
 
     const getSpaceCardMaker = (spaceCardObj) => {
       console.log(rocketinfo.length)
-      console.log(index)
       // if (!data.length) {
       return (
         <>

@@ -2,7 +2,7 @@ import React, { useState, Component } from 'react';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import { Avatar, Grid, Divider, Box, Modal } from '@material-ui/core';
+import { Avatar, Grid, Divider, Box, Modal, CardMedia } from '@material-ui/core';
 import { flexbox } from '@material-ui/system';
 import ListItemText from '@material-ui/core/ListItemText';
 import List from '@material-ui/core/List';
@@ -19,10 +19,14 @@ import CloseIcon from '@material-ui/icons/Close';
 const useStyles = makeStyles((theme) => ({
     root: {
         minWidth: 275,
+        paddingTop: 0,
     },
     dialog: {
-        margin: 0,
-        padding: theme.spacing(2),
+        padding: "0px",
+        paddingTop: "0px!important",
+    },
+    dialogbody: {
+        padding: "10px",
     },
     title: {
         fontSize: 14,
@@ -32,48 +36,52 @@ const useStyles = makeStyles((theme) => ({
     },
     closeButton: {
         position: 'absolute',
-        right: theme.spacing(1),
-        top: theme.spacing(1),
+        right: 1,
+        top: 1,
         color: theme.palette.grey[500],
     },
+    media: {
+        width: "100%",
+        margin: null,
+    }
 }));
 
 const DialogTitle = withStyles(useStyles)((props) => {
-    const { children, classes, onClose, ...other } = props;
+    const { children, onClose, ...other } = props;
+    const classes = useStyles();
+
     return (
-      <MuiDialogTitle disableTypography className={classes.dialog} {...other}>
-        <Typography variant="h6">{children}</Typography>
-        {onClose ? (
-          <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
-            <CloseIcon />
-          </IconButton>
-        ) : null}
-      </MuiDialogTitle>
+        <MuiDialogTitle disableTypography className={classes.dialog} {...other}>
+             <Typography variant="h6">{children }
+            {onClose ? (
+                <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
+                    <Typography>Close</Typography><CloseIcon />
+                </IconButton>
+            ) : null}
+            </Typography>
+        </MuiDialogTitle>
     );
-  });
-  
-  const DialogContent = withStyles((theme) => ({
+});
+
+const DialogContent = withStyles((theme) => ({
     root: {
-      padding: theme.spacing(2),
+        padding: theme.spacing(0),
     },
-  }))(MuiDialogContent);
-  
-  const DialogActions = withStyles((theme) => ({
-    root: {
-      margin: 0,
-      padding: theme.spacing(1),
-    },
-  }))(MuiDialogActions);
+}))(MuiDialogContent);
 
 export default function ShipItem(data, index, props) {
-    console.log(props)
+    // console.log(index)
     const classes = useStyles();
     const [open, setOpen] = useState(false);
     // const [modalStyle] = useState(getModalStyle);
     const { links, rocket, launch_site } = data;
     const imageLink = links.flickr_images[0];
-    const site = launch_site.site_name_long;
-    const { cost_per_launch, description, name } = rocket.rocket;
+    // const site = launch_site.site_name_long;
+    const { cost_per_launch, description, name, country, diameter, height } = rocket.rocket;
+
+    function numberWithCommas(cost_per_launch) {
+        return cost_per_launch.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     function abbreviateNumber(cost_per_launch) {
         var newCost = cost_per_launch;
@@ -94,20 +102,20 @@ export default function ShipItem(data, index, props) {
 
     const handleClickOpen = () => {
         setOpen(true);
-      };
-      const handleClose = () => {
+    };
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
 
     return (
 
-        <Grid container 
-            direction="row" 
-            display="flex" 
-            alignContent="space-around" 
-            alignItems="center" 
+        <Grid container
+            direction="row"
+            display="flex"
+            alignContent="space-around"
+            alignItems="center"
             justify="center">
-            <Grid item xs={3}>           
+            <Grid item xs={2}>
                 <Avatar src={imageLink} />
             </Grid>
             <Grid item xs={6}>
@@ -117,52 +125,96 @@ export default function ShipItem(data, index, props) {
                         <Typography>{abbreviateNumber(cost_per_launch)}</Typography>
                     </Grid>
                     <Grid container direction="row">
-                        <Typography 
-                            variant="p" 
-                            noWrap minWidth="20"
+                        <Typography
+                            variant="p"
+                            noWrap
+                            minWidth="20px"
                         >
-                        {description}
+                            {description}
                         </Typography>
                     </Grid>
                 </Grid>
             </Grid>
             <Grid item xs={3}>
-                <Button 
-                    variant="contained" 
-                    color="primary" 
-                    onClick={handleClickOpen}>More Info</Button>
-                <Dialog 
-                    onClose={handleClose} 
-                    aria-labelledby="customized-dialog-title" 
-                    open={open}>
-                    <DialogTitle 
-                        id="customized-dialog-title" 
-                        onClose={handleClose}>
-                        Modal title
-                    </DialogTitle>
-                        <DialogContent dividers>
-                            <Typography gutterBottom>
-                                Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                                in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                            </Typography>
-                            <Typography gutterBottom>
-                                Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis
-                                lacus vel augue laoreet rutrum faucibus dolor auctor.
-                            </Typography>
-                            <Typography gutterBottom>
-                                Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel
-                                scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus
-                                auctor fringilla.
-                            </Typography>
-                        </DialogContent>
-                    <DialogActions>
-                        <Button 
-                            autoFocus 
-                            onClick={handleClose} 
-                            color="primary">
-                            Save changes
-                        </Button>
-                    </DialogActions>
+                <Button
+                    variant="contained"
+                    color="primary"
+                    onClick={handleClickOpen}
+                >More Info</Button>
+
+                <Dialog
+                    square={true}
+                    onClose={handleClose}
+                    aria-labelledby="customized-dialog-title"
+                    open={open}
+                >
+                    <DialogContent
+                        dividers
+                        className={ classes.dialog }
+                    >
+                        <Grid container direction="row">
+                            <Grid 
+                                item xs={4}>
+                                <img
+                                    className={classes.media}
+                                    src={imageLink}
+                                    title={"image of " + name}
+                                />
+                            </Grid>
+                            <Grid 
+                                item xs={8} 
+                                className={classes.dialogbody}
+                            >
+                                <Grid 
+                                    container 
+                                    direction="column" 
+                                >
+                                    <Grid 
+                                        item 
+                                        xs={12}
+                                        className={classes.dialogbody}
+                                    >
+                                        <DialogTitle
+                                            id="customized-dialog-title"
+                                            onClose={handleClose}>
+                                        </DialogTitle>
+                                    </Grid>
+                                    <Grid 
+                                        item 
+                                        xs={12}
+                                        className={classes.dialogbody}
+                                    >
+                                        <Typography variant="h5">{ name }</Typography>
+                                        <Typography paragraph>{ country }</Typography>
+                                        <Grid container direction="row">
+
+                                                <Grid item xs={3} align="center">
+                                                    <Typography>COST/LAUNCH</Typography>
+                                                    <Typography paragraph>{ "$" + numberWithCommas(cost_per_launch) }</Typography>
+                                                </Grid>
+
+                                                <Divider variant="vertical"/>
+
+                                                <Grid item xs={3} align="center">
+                                                    <Typography>HEIGHT</Typography>
+                                                    <Typography paragraph>{ height.meters + "M" }</Typography>
+                                                </Grid>
+
+                                                <Divider variant="vertical"/>
+
+                                                <Grid item xs={3} align="center">
+                                                    <Typography>DIAMETER</Typography>
+                                                    <Typography paragraph>{ diameter.meters + " M"}</Typography>
+                                                </Grid>
+
+
+                                        </Grid>
+                                        <Typography paragraph>{ description }</Typography>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </DialogContent>
                 </Dialog>
             </Grid>
         </Grid>
