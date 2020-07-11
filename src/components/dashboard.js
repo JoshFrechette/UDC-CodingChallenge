@@ -26,11 +26,11 @@ import CreditCardIcon from '@material-ui/icons/CreditCard';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import { Avatar, CardHeader, IconButton, CardMedia } from '@material-ui/core';
+import { Avatar, CardHeader, IconButton, CardMedia, Container} from '@material-ui/core';
 
 import Grid from '@material-ui/core/Grid';
+import Footer from './footer';
 import RocketQuery from './query';
-import { BottomNavigation } from '@material-ui/core';
 import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
@@ -48,6 +48,13 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+  },
+  footer: {
+    // position: "static",
+    bottom: 0,
+    marginTop: 'calc(40% - 100px)',
+    // backgroundColor:
+    //   theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
   drawerPaper: {
     width: drawerWidth,
@@ -114,6 +121,7 @@ export default function PermanentDrawerLeft() {
     <div className={classes.root}>
 
       <CssBaseline />
+      
       {/* Top Nav */}
       <AppBar position="fixed" className={classes.appBar} >
         <Toolbar>
@@ -136,8 +144,8 @@ export default function PermanentDrawerLeft() {
               value="rockets"
               wrapped
               {...a11yProps('one')} />
-            <Tab 
-              label="Satellites" 
+            <Tab
+              label="Satellites"
               value="satellites" />
           </Tabs>
         </ListItem>
@@ -159,7 +167,6 @@ export default function PermanentDrawerLeft() {
         </div>
         <Divider />
         <List>
-
           <ListItem >
             <ListItemIcon><HomeIcon /></ListItemIcon>
             <ListItemText>Dashboard</ListItemText>
@@ -172,16 +179,14 @@ export default function PermanentDrawerLeft() {
             <ListItemIcon><CreditCardIcon /></ListItemIcon>
             <ListItemText>Subscription</ListItemText>
           </ListItem>
-
         </List>
-
       </Drawer>
 
 
       {/* Main content */}
       <main className={classes.content}>
         <div className={classes.toolbar} />
-      {/* <TabPanel value={value} index="one"> */}
+        {/* <TabPanel value={value} index="one"> */}
         <Typography variant="h4">Active Rockets</Typography>
 
         <Grid container direction="column">
@@ -198,18 +203,23 @@ export default function PermanentDrawerLeft() {
             </Paper>
           </Grid>
         </Grid>
-      {/* </TabPanel> */}
-      
-      {/* <BottomNavigation> */}
-        <Grid container direction="row">
-          <Grid item xs={6}>
-            <Typography>Copyright 2020 Devias IO</Typography>
-          </Grid>
-          <Grid item xs={6}>
-            <Typography>Support | Contact</Typography>
-          </Grid>
+        {/* </TabPanel> */}
+
+        {/* <BottomNavigation> */}
+        <footer className={ classes.footer }>
+          <Container>
+              <Footer />
+          </Container>
+        </footer>
+        {/* <div className={ classes.footer }>
+        <Grid
+            container
+            direction="row">
+            <Footer />
         </Grid>
+        </div> */}
       </main>
+
     </div>
   );
 }

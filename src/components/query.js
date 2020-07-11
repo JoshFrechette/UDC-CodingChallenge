@@ -35,8 +35,9 @@ const ROCKET_QUERY = gql`
 `;
 
 const CardGen = ({ data, index, props }) => {
+  // const { index } = props;
 
-    console.log(data)
+    console.log(data, index)
     const rocketinfo = data.launches;
     console.log(rocketinfo)
 
