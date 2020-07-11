@@ -34,11 +34,21 @@ const useStyles = makeStyles((theme) => ({
     pos: {
         marginBottom: 12,
     },
+    moreButton: {
+        "&:hover": {
+            color: "primary",
+            elevation: 11,
+        }
+    },
     closeButton: {
         position: 'absolute',
         right: 1,
         top: 1,
         color: theme.palette.grey[500],
+    },
+    dialogUnit: {
+        fontSize: "10px",
+        color: "grey"
     },
     media: {
         width: "100%",
@@ -70,10 +80,8 @@ const DialogContent = withStyles((theme) => ({
 }))(MuiDialogContent);
 
 export default function ShipItem(data, index, props) {
-    // console.log(index)
     const classes = useStyles();
     const [open, setOpen] = useState(false);
-    // const [modalStyle] = useState(getModalStyle);
     const { links, rocket, launch_site } = data;
     const imageLink = links.flickr_images[0];
     // const site = launch_site.site_name_long;
@@ -137,13 +145,18 @@ export default function ShipItem(data, index, props) {
             </Grid>
             <Grid item xs={3}>
                 <Button
+                    className={ classes.moreButton }
                     variant="contained"
-                    color="primary"
+                    disableElevation
+                    // color="primary"
                     onClick={handleClickOpen}
+                    // onFocusVisible={
+                    //     color="primary"
+                    // }
                 >More Info</Button>
 
                 <Dialog
-                    square={true}
+                    
                     onClose={handleClose}
                     aria-labelledby="customized-dialog-title"
                     open={open}
@@ -186,30 +199,39 @@ export default function ShipItem(data, index, props) {
                                     >
                                         <Typography variant="h5">{ name }</Typography>
                                         <Typography paragraph>{ country }</Typography>
-                                        <Grid container direction="row">
+                                        
+                                         <Box mx="auto" p={1}>
+                                        <Grid 
+                                            container 
+                                            direction="row"
+                                            alignItems="center"
+                                        >
 
-                                                <Grid item xs={3} align="center">
-                                                    <Typography>COST/LAUNCH</Typography>
-                                                    <Typography paragraph>{ "$" + numberWithCommas(cost_per_launch) }</Typography>
-                                                </Grid>
+                                                    <Grid item xs={3} align="center">
+                                                        <Typography className={ classes.dialogUnit }>COST/LAUNCH</Typography>
+                                                        <Typography paragraph>{ "$" + numberWithCommas(cost_per_launch) }</Typography>
+                                                    </Grid>
 
-                                                <Divider variant="vertical"/>
+                                                    <Divider light color="primary" variant="middle" orientation="vertical" flexItem />
 
-                                                <Grid item xs={3} align="center">
-                                                    <Typography>HEIGHT</Typography>
-                                                    <Typography paragraph>{ height.meters + "M" }</Typography>
-                                                </Grid>
+                                                    <Grid item xs={3} align="center">
+                                                        <Typography className={ classes.dialogUnit }>HEIGHT</Typography>
+                                                        <Typography paragraph>{ height.meters + "M" }</Typography>
+                                                    </Grid>
 
-                                                <Divider variant="vertical"/>
+                                                    <Divider color="primary" variant="middle" orientation="vertical" flexItem />
 
-                                                <Grid item xs={3} align="center">
-                                                    <Typography>DIAMETER</Typography>
-                                                    <Typography paragraph>{ diameter.meters + " M"}</Typography>
-                                                </Grid>
-
+                                                    <Grid item xs={3} align="center">
+                                                        <Typography className={ classes.dialogUnit }>DIAMETER</Typography>
+                                                        <Typography paragraph>{ diameter.meters + " M"}</Typography>
+                                                    </Grid>
+                                              
 
                                         </Grid>
-                                        <Typography paragraph>{ description }</Typography>
+                                        </Box>
+                                        <Grid item paddingTop={10}>
+                                            <Typography paragraph>{ description }</Typography>
+                                        </Grid>
                                     </Grid>
                                 </Grid>
                             </Grid>

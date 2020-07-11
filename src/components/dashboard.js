@@ -35,23 +35,6 @@ import Paper from '@material-ui/core/Paper';
 
 const drawerWidth = 240;
 
-// function rand() {
-//   return Math.round(Math.random() * 20) - 10;
-// }
-
-// function getModalStyle() {
-//   const top = 50 + rand();
-//   const left = 50 + rand();
-
-//   return {
-//     top: `${top}%`,
-//     left: `${left}%`,
-//     transform: `translate(-${top}%, -${left}%)`,
-//   };
-// }
-
-
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -121,7 +104,6 @@ function a11yProps(index) {
 export default function PermanentDrawerLeft() {
   const classes = useStyles();
   const [value, setValue] = useState('1');
-  // const [modalStyle] = useState(getModalStyle);
   const [open, setOpen] = useState(false);
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -154,7 +136,9 @@ export default function PermanentDrawerLeft() {
               value="rockets"
               wrapped
               {...a11yProps('one')} />
-            <Tab label="Satellites" value="satellites" />
+            <Tab 
+              label="Satellites" 
+              value="satellites" />
           </Tabs>
         </ListItem>
       </AppBar>
@@ -170,7 +154,6 @@ export default function PermanentDrawerLeft() {
       >
         <div className={classes.toolbar}>
           <ListItem >
-            {/* <ListItemIcon><RocketIcon/></ListItemIcon> */}
             <ListItemText><img src={Rocket} alt="rocket" />Welcome, Ryan</ListItemText>
           </ListItem>
         </div>
@@ -193,10 +176,12 @@ export default function PermanentDrawerLeft() {
         </List>
 
       </Drawer>
-      {/* <TabPanel value={value} index="one"> */}
+
+
       {/* Main content */}
       <main className={classes.content}>
         <div className={classes.toolbar} />
+      {/* <TabPanel value={value} index="one"> */}
         <Typography variant="h4">Active Rockets</Typography>
 
         <Grid container direction="column">
@@ -206,28 +191,25 @@ export default function PermanentDrawerLeft() {
           <Grid item xs={8}>
             <Paper>
 
-              {/* <Grid container direction="column" alignConten="space-between"> */}
               <List>
                 <RocketQuery />
               </List>
-              {/* </Grid> */}
 
             </Paper>
           </Grid>
         </Grid>
-
+      {/* </TabPanel> */}
+      
+      {/* <BottomNavigation> */}
         <Grid container direction="row">
-          {/* <BottomNavigation> */}
           <Grid item xs={6}>
             <Typography>Copyright 2020 Devias IO</Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography>Support | Contact</Typography>
           </Grid>
-          {/* </BottomNavigation> */}
         </Grid>
       </main>
-      {/* </TabPanel> */}
     </div>
   );
 }
