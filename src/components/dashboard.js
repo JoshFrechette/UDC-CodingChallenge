@@ -32,6 +32,7 @@ import Grid from '@material-ui/core/Grid';
 import Footer from './footer';
 import RocketQuery from './query';
 import Paper from '@material-ui/core/Paper';
+import cyan from '@material-ui/core/colors/cyan';
 
 const drawerWidth = 240;
 
@@ -48,6 +49,9 @@ const useStyles = makeStyles((theme) => ({
   drawer: {
     width: drawerWidth,
     flexShrink: 0,
+  },
+  sidenav: {
+    paddingTop: "10px"
   },
   footer: {
     // position: "static",
@@ -71,6 +75,9 @@ const useStyles = makeStyles((theme) => ({
     // padding: 10,
     // width: theme.spacing(10),
     // height: theme.spacing(16),
+  },
+  user: {
+    color: cyan[500]
   }
 }));
 
@@ -162,7 +169,14 @@ export default function PermanentDrawerLeft() {
       >
         <div className={classes.toolbar}>
           <ListItem >
-            <ListItemText><img src={Rocket} alt="rocket" />Welcome, Ryan</ListItemText>
+            <Grid container className={ classes.sidenav } direction="row" >
+              <Grid item xs={3}><img src={Rocket} alt="rocket" /></Grid>
+              <Grid item xs={9}>
+                <Box>
+                  <ListItemText>Welcome, <span className={ classes.user }>Ryan</span></ListItemText>
+                </Box>
+              </Grid>
+            </Grid>
           </ListItem>
         </div>
         <Divider />
